@@ -1,0 +1,58 @@
+---
+title: "Bob Ross Palette"
+author: "Nujcharee Haswell"
+date: "17/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lLWEXRAnQd0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Just another night Netflix binge watching while doing some dataviz projects.
+
+I am no artist but I do appreciate good piece of art work. Recently, discovered a programme on Netflix called **Chilling with Bob Ross** and quickly he becomes one of my idols.
+
+Check out his palette and choices of colours. 
+What is Grimson Blue? What about Titanium White? 
+Little that I know, there are so many shades of blue!
+
+Spending most of my day working with HEX codes, I wonder if I can find "Grimson Blue" - Hex code style...??
+
+```{r message=FALSE}
+library(paletter)
+library(png)
+download.file("https://www.twoinchbrush.com/images/painting373.png", "image.png")
+painting     <- readPNG("image.png")
+```
+
+### Bob Ross' ISLAND IN THE WILDERNESS
+```{r message=FALSE}
+grid::grid.raster(painting)
+
+
+dimension    <- dim(painting)
+painting_rgb <- data.frame(
+  x = rep(1:dimension[2], each = dimension[1]),
+  y = rep(dimension[1]:1, dimension[2]),
+  R = as.vector(painting[,,1]), #slicing our array into three
+  G = as.vector(painting[,,2]),
+  B = as.vector(painting[,,3])
+)
+
+k_means        <- kmeans(painting_rgb[,c("R","G","B")], centers = 20, iter.max = 30)
+```
+## What is grimson blue in hex code?
+
+```{r}
+show_col(rgb(k_means$centers))
+```
+
+As the man himself said "The most fun part of this, is washing the brush...."
+
+As for me, the fun part is finding grimson blue in Hex code. 
+
+
+
