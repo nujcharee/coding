@@ -1,0 +1,7 @@
+{
+  "name": "Mountain Lake",
+  "dataColors": ["#92AD5E", "#465149", "#A1BBFC", "#DCE6F9", "#CDD2DD", "#545416", "#A4B690", "#F3F9FF", "#C3D4FE", "#0A1212", "#6E7A58", "#B7BEC5"],
+  "background": "#FFFFFF",
+  "foreground": "#a7dd37",
+  "tableAccent": "#1dc080"
+}
